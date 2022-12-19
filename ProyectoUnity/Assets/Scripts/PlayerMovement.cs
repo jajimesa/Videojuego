@@ -54,6 +54,10 @@ public class PlayerMovement : MonoBehaviour
     private enum MovementState { iddle, running, jumping, falling }
     private MovementState state;
 
+    /* Guardamos en collider la componente BoxCollider2D de nuestro player.
+     * Creamos una "LayerMask" que usaremos más adelante para la colisión
+     * con el suelo.
+     */
     private BoxCollider2D collider;
     [SerializeField] private LayerMask jumpableGround;
 
@@ -126,6 +130,10 @@ public class PlayerMovement : MonoBehaviour
         anim.SetInteger("State", (int)state);
     }
 
+    /* Physics2D.BoxCast castea una hitbox alrededor del player, la guarda en jumpableGround
+     * y devuelve true si esta hitbox entra en contacto con otra hitbox (en nuestro caso, será
+     * del suelo.
+     */
     private bool isGrounded()
     {
         return Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
