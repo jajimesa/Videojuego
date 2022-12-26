@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;   // Importamos la biblioteca de la IU
 
 public class ItemCollector : MonoBehaviour
 {
+    private int cherries = 0; // Contador de cerezas.
+
+    [SerializeField] private Text cherriesText;
+    
     /* Como hemos marcado Cherry como "trigger" podemos usar reescribir el siguiente método en lugar de
      * OnCollisionEnter2D. OnTriggerEnter2D es un evento que se desencadena cuando el collider2D del
      * jugador entra en contacto con otro Collider2D que se ha marcado como trigger. "collision" es el
@@ -17,6 +22,9 @@ public class ItemCollector : MonoBehaviour
         if (collision.gameObject.CompareTag("Cherry"))
         {
             Destroy(collision.gameObject);
+            cherries++;
+            Debug.Log("Cerezas: " + cherries); // Lo mostramos por consola.
+            cherriesText.text = "Cherries: " + cherries;
         }
     }
 }
