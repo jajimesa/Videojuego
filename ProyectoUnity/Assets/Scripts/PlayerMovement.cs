@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
 
     /* Physics2D.BoxCast castea una hitbox alrededor del player, la guarda en jumpableGround
      * y devuelve true si esta hitbox entra en contacto con otra hitbox (en nuestro caso, será
-     * del suelo.
+     * del suelo).
      */
     private bool isGrounded()
     {
