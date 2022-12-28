@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement; // Importamos esta biblioteca
 
 public class PlayerLife : MonoBehaviour
 {
+    /* En este script se encuentra la DeathLogic del videojuego.
+     * Nos ayudamos del Tag "Trap" para poder reutilizar código.
+     * Basta que un objeto tenga una componente Collider2D y que
+     * le demos esta Tag para que al entrar en contacto con él,
+     * el jugador muera.
+     */
+
+
     private Animator anim;
     private Rigidbody2D rb;
     private void Start()
