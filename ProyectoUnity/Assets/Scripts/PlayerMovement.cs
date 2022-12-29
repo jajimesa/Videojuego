@@ -61,6 +61,11 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D collider;
     [SerializeField] private LayerMask jumpableGround;
 
+    /* Declaramos un AudioSource para saltar. Reproduciremos el sonido cada
+     * vez que el jugador salte.
+     */
+    [SerializeField] private AudioSource jumpSoundEffect;
+
 
     // Start es invocado en el primer frame de ejecución.
     private void Start()
@@ -89,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
          */
         if (Input.GetButtonDown("Jump") && isGrounded())
         {
+            jumpSoundEffect.Play();     // Reproducimos el sonido de salto.
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);     // Mantenemos la velocidad en el eje X si no queremos que frene en seco.
         }
 

@@ -13,9 +13,10 @@ public class PlayerLife : MonoBehaviour
      * el jugador muera.
      */
 
-
     private Animator anim;
     private Rigidbody2D rb;
+    [SerializeField] AudioSource deathSoundEffect;
+
     private void Start()
     {
         anim = gameObject.GetComponent<Animator>();
@@ -27,6 +28,7 @@ public class PlayerLife : MonoBehaviour
         // Si colisionamos con un "Trap" gameObject:
         if (collision.gameObject.CompareTag("Trap"))
         {
+            deathSoundEffect.Play();
             Die();
         }
     }
